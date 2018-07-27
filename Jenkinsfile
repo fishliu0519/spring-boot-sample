@@ -25,6 +25,21 @@ pipeline {
         }
       }
     }
+    stage('package') {
+      steps {
+        sh 'mvn package'
+      }
+    }
+    stage('archieve') {
+      steps {
+        archiveArtifacts 'target/spring-boot-sample-data-rest-0.1.0.jar'
+      }
+    }
+    stage('deploy') {
+      steps {
+        sh 'make deploy-default'
+      }
+    }
   }
   post {
     always {
