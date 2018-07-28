@@ -8,7 +8,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'mvn clean cobertura:cobertura test'
+        sh 'docker-compose run test'
       }
     }
     stage('reports') {
